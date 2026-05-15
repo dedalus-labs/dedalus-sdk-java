@@ -1,0 +1,458 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package com.dedalus_sdk.api.models
+
+import com.dedalus_sdk.api.core.JsonValue
+import com.dedalus_sdk.api.core.jsonMapper
+import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
+import kotlin.jvm.optionals.getOrNull
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
+
+internal class ModelSettingsTest {
+
+    @Test
+    fun create() {
+        val modelSettings =
+            ModelSettings.builder()
+                .attributes(
+                    ModelSettings.Attributes.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .audio(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .deferred(true)
+                .extraArgs(
+                    ModelSettings.ExtraArgs.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .extraHeaders(
+                    ModelSettings.ExtraHeaders.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .extraQuery(
+                    ModelSettings.ExtraQuery.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .frequencyPenalty(0.0)
+                .generationConfig(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .includeUsage(true)
+                .inputAudioFormat("input_audio_format")
+                .inputAudioTranscription(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .logitBias(
+                    ModelSettings.LogitBias.builder()
+                        .putAdditionalProperty("foo", JsonValue.from(0))
+                        .build()
+                )
+                .logprobs(true)
+                .maxCompletionTokens(0L)
+                .maxTokens(0L)
+                .metadata(
+                    ModelSettings.Metadata.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .addModality("string")
+                .n(0L)
+                .outputAudioFormat("output_audio_format")
+                .parallelToolCalls(true)
+                .prediction(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .presencePenalty(0.0)
+                .promptCacheKey("prompt_cache_key")
+                .reasoning(
+                    Reasoning.builder()
+                        .effort(Reasoning.Effort.NONE)
+                        .generateSummary(Reasoning.GenerateSummary.AUTO)
+                        .summary(Reasoning.Summary.AUTO)
+                        .build()
+                )
+                .reasoningEffort("reasoning_effort")
+                .responseFormat(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .safetyIdentifier("safety_identifier")
+                .addSafetySetting(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .searchParameters(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .seed(0L)
+                .serviceTier("service_tier")
+                .stop("string")
+                .store(true)
+                .stream(true)
+                .streamOptions(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .structuredOutput(JsonValue.from(mapOf<String, Any>()))
+                .systemInstruction(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .temperature(0.0)
+                .thinking(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .timeout(0.0)
+                .toolChoice(ToolChoice.UnionMember0.AUTO)
+                .toolConfig(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .topK(0L)
+                .topLogprobs(0L)
+                .topP(0.0)
+                .truncation(ModelSettings.Truncation.AUTO)
+                .turnDetection(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .user("user")
+                .verbosity("verbosity")
+                .voice("voice")
+                .webSearchOptions(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .build()
+
+        assertThat(modelSettings.attributes())
+            .contains(
+                ModelSettings.Attributes.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+        assertThat(modelSettings.audio())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.deferred()).contains(true)
+        assertThat(modelSettings.extraArgs())
+            .contains(
+                ModelSettings.ExtraArgs.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+        assertThat(modelSettings.extraHeaders())
+            .contains(
+                ModelSettings.ExtraHeaders.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.extraQuery())
+            .contains(
+                ModelSettings.ExtraQuery.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("bar"))
+                    .build()
+            )
+        assertThat(modelSettings.frequencyPenalty()).contains(0.0)
+        assertThat(modelSettings.generationConfig())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.includeUsage()).contains(true)
+        assertThat(modelSettings.inputAudioFormat()).contains("input_audio_format")
+        assertThat(modelSettings.inputAudioTranscription())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.logitBias())
+            .contains(
+                ModelSettings.LogitBias.builder()
+                    .putAdditionalProperty("foo", JsonValue.from(0))
+                    .build()
+            )
+        assertThat(modelSettings.logprobs()).contains(true)
+        assertThat(modelSettings.maxCompletionTokens()).contains(0L)
+        assertThat(modelSettings.maxTokens()).contains(0L)
+        assertThat(modelSettings.metadata())
+            .contains(
+                ModelSettings.Metadata.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.modalities().getOrNull()).containsExactly("string")
+        assertThat(modelSettings.n()).contains(0L)
+        assertThat(modelSettings.outputAudioFormat()).contains("output_audio_format")
+        assertThat(modelSettings.parallelToolCalls()).contains(true)
+        assertThat(modelSettings.prediction())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.presencePenalty()).contains(0.0)
+        assertThat(modelSettings.promptCacheKey()).contains("prompt_cache_key")
+        assertThat(modelSettings.reasoning())
+            .contains(
+                Reasoning.builder()
+                    .effort(Reasoning.Effort.NONE)
+                    .generateSummary(Reasoning.GenerateSummary.AUTO)
+                    .summary(Reasoning.Summary.AUTO)
+                    .build()
+            )
+        assertThat(modelSettings.reasoningEffort()).contains("reasoning_effort")
+        assertThat(modelSettings.responseFormat())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.safetyIdentifier()).contains("safety_identifier")
+        assertThat(modelSettings.safetySettings().getOrNull())
+            .containsExactly(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.searchParameters())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.seed()).contains(0L)
+        assertThat(modelSettings.serviceTier()).contains("service_tier")
+        assertThat(modelSettings.stop()).contains(ModelSettings.Stop.ofString("string"))
+        assertThat(modelSettings.store()).contains(true)
+        assertThat(modelSettings.stream()).contains(true)
+        assertThat(modelSettings.streamOptions())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings._structuredOutput())
+            .isEqualTo(JsonValue.from(mapOf<String, Any>()))
+        assertThat(modelSettings.systemInstruction())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.temperature()).contains(0.0)
+        assertThat(modelSettings.thinking())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.timeout()).contains(0.0)
+        assertThat(modelSettings.toolChoice())
+            .contains(ToolChoice.ofUnionMember0(ToolChoice.UnionMember0.AUTO))
+        assertThat(modelSettings.toolConfig())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.topK()).contains(0L)
+        assertThat(modelSettings.topLogprobs()).contains(0L)
+        assertThat(modelSettings.topP()).contains(0.0)
+        assertThat(modelSettings.truncation()).contains(ModelSettings.Truncation.AUTO)
+        assertThat(modelSettings.turnDetection())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+        assertThat(modelSettings.user()).contains("user")
+        assertThat(modelSettings.verbosity()).contains("verbosity")
+        assertThat(modelSettings.voice()).contains("voice")
+        assertThat(modelSettings.webSearchOptions())
+            .contains(
+                JsonObjectInput.builder()
+                    .putAdditionalProperty("foo", JsonValue.from("string"))
+                    .build()
+            )
+    }
+
+    @Test
+    fun roundtrip() {
+        val jsonMapper = jsonMapper()
+        val modelSettings =
+            ModelSettings.builder()
+                .attributes(
+                    ModelSettings.Attributes.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .audio(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .deferred(true)
+                .extraArgs(
+                    ModelSettings.ExtraArgs.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .extraHeaders(
+                    ModelSettings.ExtraHeaders.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .extraQuery(
+                    ModelSettings.ExtraQuery.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("bar"))
+                        .build()
+                )
+                .frequencyPenalty(0.0)
+                .generationConfig(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .includeUsage(true)
+                .inputAudioFormat("input_audio_format")
+                .inputAudioTranscription(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .logitBias(
+                    ModelSettings.LogitBias.builder()
+                        .putAdditionalProperty("foo", JsonValue.from(0))
+                        .build()
+                )
+                .logprobs(true)
+                .maxCompletionTokens(0L)
+                .maxTokens(0L)
+                .metadata(
+                    ModelSettings.Metadata.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .addModality("string")
+                .n(0L)
+                .outputAudioFormat("output_audio_format")
+                .parallelToolCalls(true)
+                .prediction(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .presencePenalty(0.0)
+                .promptCacheKey("prompt_cache_key")
+                .reasoning(
+                    Reasoning.builder()
+                        .effort(Reasoning.Effort.NONE)
+                        .generateSummary(Reasoning.GenerateSummary.AUTO)
+                        .summary(Reasoning.Summary.AUTO)
+                        .build()
+                )
+                .reasoningEffort("reasoning_effort")
+                .responseFormat(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .safetyIdentifier("safety_identifier")
+                .addSafetySetting(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .searchParameters(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .seed(0L)
+                .serviceTier("service_tier")
+                .stop("string")
+                .store(true)
+                .stream(true)
+                .streamOptions(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .structuredOutput(JsonValue.from(mapOf<String, Any>()))
+                .systemInstruction(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .temperature(0.0)
+                .thinking(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .timeout(0.0)
+                .toolChoice(ToolChoice.UnionMember0.AUTO)
+                .toolConfig(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .topK(0L)
+                .topLogprobs(0L)
+                .topP(0.0)
+                .truncation(ModelSettings.Truncation.AUTO)
+                .turnDetection(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .user("user")
+                .verbosity("verbosity")
+                .voice("voice")
+                .webSearchOptions(
+                    JsonObjectInput.builder()
+                        .putAdditionalProperty("foo", JsonValue.from("string"))
+                        .build()
+                )
+                .build()
+
+        val roundtrippedModelSettings =
+            jsonMapper.readValue(
+                jsonMapper.writeValueAsString(modelSettings),
+                jacksonTypeRef<ModelSettings>(),
+            )
+
+        assertThat(roundtrippedModelSettings).isEqualTo(modelSettings)
+    }
+}

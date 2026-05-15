@@ -1,0 +1,165 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package com.dedalus_sdk.api.services.async
+
+import com.dedalus_sdk.api.core.ClientOptions
+import com.dedalus_sdk.api.core.RequestOptions
+import com.dedalus_sdk.api.core.handlers.errorBodyHandler
+import com.dedalus_sdk.api.core.handlers.errorHandler
+import com.dedalus_sdk.api.core.handlers.jsonHandler
+import com.dedalus_sdk.api.core.http.HttpMethod
+import com.dedalus_sdk.api.core.http.HttpRequest
+import com.dedalus_sdk.api.core.http.HttpResponse
+import com.dedalus_sdk.api.core.http.HttpResponse.Handler
+import com.dedalus_sdk.api.core.http.HttpResponseFor
+import com.dedalus_sdk.api.core.http.json
+import com.dedalus_sdk.api.core.http.multipartFormData
+import com.dedalus_sdk.api.core.http.parseable
+import com.dedalus_sdk.api.core.prepareAsync
+import com.dedalus_sdk.api.models.images.ImageCreateVariationParams
+import com.dedalus_sdk.api.models.images.ImageEditParams
+import com.dedalus_sdk.api.models.images.ImageGenerateParams
+import com.dedalus_sdk.api.models.images.ImagesResponse
+import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
+
+class ImageServiceAsyncImpl internal constructor(private val clientOptions: ClientOptions) :
+    ImageServiceAsync {
+
+    private val withRawResponse: ImageServiceAsync.WithRawResponse by lazy {
+        WithRawResponseImpl(clientOptions)
+    }
+
+    override fun withRawResponse(): ImageServiceAsync.WithRawResponse = withRawResponse
+
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): ImageServiceAsync =
+        ImageServiceAsyncImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+
+    override fun createVariation(
+        params: ImageCreateVariationParams,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<ImagesResponse> =
+        // post /v1/images/variations
+        withRawResponse().createVariation(params, requestOptions).thenApply { it.parse() }
+
+    override fun edit(
+        params: ImageEditParams,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<ImagesResponse> =
+        // post /v1/images/edits
+        withRawResponse().edit(params, requestOptions).thenApply { it.parse() }
+
+    override fun generate(
+        params: ImageGenerateParams,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<ImagesResponse> =
+        // post /v1/images/generations
+        withRawResponse().generate(params, requestOptions).thenApply { it.parse() }
+
+    class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
+        ImageServiceAsync.WithRawResponse {
+
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
+
+        override fun withOptions(
+            modifier: Consumer<ClientOptions.Builder>
+        ): ImageServiceAsync.WithRawResponse =
+            ImageServiceAsyncImpl.WithRawResponseImpl(
+                clientOptions.toBuilder().apply(modifier::accept).build()
+            )
+
+        private val createVariationHandler: Handler<ImagesResponse> =
+            jsonHandler<ImagesResponse>(clientOptions.jsonMapper)
+
+        override fun createVariation(
+            params: ImageCreateVariationParams,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<ImagesResponse>> {
+            val request =
+                HttpRequest.builder()
+                    .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
+                    .addPathSegments("v1", "images", "variations")
+                    .body(multipartFormData(clientOptions.jsonMapper, params._body()))
+                    .build()
+                    .prepareAsync(clientOptions, params)
+            val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
+            return request
+                .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
+                .thenApply { response ->
+                    errorHandler.handle(response).parseable {
+                        response
+                            .use { createVariationHandler.handle(it) }
+                            .also {
+                                if (requestOptions.responseValidation!!) {
+                                    it.validate()
+                                }
+                            }
+                    }
+                }
+        }
+
+        private val editHandler: Handler<ImagesResponse> =
+            jsonHandler<ImagesResponse>(clientOptions.jsonMapper)
+
+        override fun edit(
+            params: ImageEditParams,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<ImagesResponse>> {
+            val request =
+                HttpRequest.builder()
+                    .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
+                    .addPathSegments("v1", "images", "edits")
+                    .body(multipartFormData(clientOptions.jsonMapper, params._body()))
+                    .build()
+                    .prepareAsync(clientOptions, params)
+            val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
+            return request
+                .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
+                .thenApply { response ->
+                    errorHandler.handle(response).parseable {
+                        response
+                            .use { editHandler.handle(it) }
+                            .also {
+                                if (requestOptions.responseValidation!!) {
+                                    it.validate()
+                                }
+                            }
+                    }
+                }
+        }
+
+        private val generateHandler: Handler<ImagesResponse> =
+            jsonHandler<ImagesResponse>(clientOptions.jsonMapper)
+
+        override fun generate(
+            params: ImageGenerateParams,
+            requestOptions: RequestOptions,
+        ): CompletableFuture<HttpResponseFor<ImagesResponse>> {
+            val request =
+                HttpRequest.builder()
+                    .method(HttpMethod.POST)
+                    .baseUrl(clientOptions.baseUrl())
+                    .addPathSegments("v1", "images", "generations")
+                    .body(json(clientOptions.jsonMapper, params._body()))
+                    .build()
+                    .prepareAsync(clientOptions, params)
+            val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
+            return request
+                .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
+                .thenApply { response ->
+                    errorHandler.handle(response).parseable {
+                        response
+                            .use { generateHandler.handle(it) }
+                            .also {
+                                if (requestOptions.responseValidation!!) {
+                                    it.validate()
+                                }
+                            }
+                    }
+                }
+        }
+    }
+}
